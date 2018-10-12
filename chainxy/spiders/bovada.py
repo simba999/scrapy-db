@@ -21,7 +21,7 @@ import pdb
 
 # db = SqliteDatabase('bovada.db')
 db = MySQLDatabase('my_app', user='root', password='admin1234',
-                         host='69.55.54.79', port=3306)
+                         host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
