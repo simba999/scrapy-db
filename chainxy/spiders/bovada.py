@@ -20,7 +20,7 @@ import pdb
 
 
 # db = SqliteDatabase('bovada.db')
-db = MySQLDatabase('my_app', user='root', password='admin1234',
+db = MySQLDatabase('my_app', user='root', password='admin1234', 
                          host='localhost', port=3306)
 
 class BaseModel(Model):
@@ -105,13 +105,13 @@ class Novada(scrapy.Spider):
                 if len(entry['competitors']) > 0:
 
                     team1_name = {
-                        'name': entry['competitors'][0]['name'],
-                        'competitorId': entry['competitors'][0]['id']
+                        'name': self.validate(entry['competitors'][0]['name']),
+                        'competitorId': self.validate(entry['competitors'][0]['id'])
                     }
 
                     team2_name = {
-                        'name': entry['competitors'][0]['name'],
-                        'competitorId': entry['competitors'][0]['id']
+                        'name': self.validate(entry['competitors'][0]['name']),
+                        'competitorId': self.validate(entry['competitors'][0]['id'])
                     }
 
                     date_time = entry['startTime']
@@ -378,7 +378,7 @@ class Novada(scrapy.Spider):
 
                             item['Date'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%Y-%m-%d')
                             item['Time'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%H:%M')
-                            item['Team_list'] = json.dumps(content_list)
+                            item['Team_list'] = json.dumps(self.validate(content_list))
 
                             existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
 
