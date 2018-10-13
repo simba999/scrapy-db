@@ -16,12 +16,18 @@ import uuid
 import urllib
 import datetime
 import copy
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from pyvirtualdisplay import Display
+
 import pdb
 
 
-# db = SqliteDatabase('bovada.db')
-db = MySQLDatabase('my_app', user='root', password='admin1234', 
-                         host='localhost', port=3306)
+db = SqliteDatabase('bovada.db')
+# db = MySQLDatabase('my_app', user='root', password='Admimn1234!@#$', host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
@@ -58,37 +64,58 @@ class Novada(scrapy.Spider):
     sports_list = [
         'baseball',
         'basketball',
-        'boxing',
-        'cricket',
-        'darts',
-        'entertainment',
-        'esports',
         'football',
-        'futsal',
-        'gaelic-games',
-        'golf',
-        'handball',
-        'hockey',
-        'horses-futures-props',
-        'motor-sports',
-        'numbers-game',
-        'politics',
-        'rugby-league',
-        'rugby-union',
-        'snooker',
         'soccer',
-        'table-tennis',
-        'tennis',
-        'ufc-mma',
-        'virtual-sports',
-        'volleyball',
-        'winter-olympics',
-        'winter-sports'
+        'hockey',
+        'tennis'
+        # 'boxing',
+        # 'cricket',
+        # 'darts',
+        # 'entertainment',
+        # 'esports',
+        # 'futsal',
+        # 'gaelic-games',
+        # 'golf',
+        # 'handball',
+        # 'horses-futures-props',
+        # 'motor-sports',
+        # 'numbers-game',
+        # 'politics',
+        # 'rugby-league',
+        # 'rugby-union',
+        # 'snooker',
+        # 'table-tennis',
+        # 'ufc-mma',
+        # 'virtual-sports',
+        # 'volleyball',
+        # 'winter-olympics',
+        # 'winter-sports'
     ]
+
+    def __init__(self):
+        chrome_options = Options()
+        chrome_options.add_argument('--dns-prefetch-disable')
+
+        # self.display = Display(visible=0, size=(1650, 1248))
+        # self.display.start()
+
+        self.driver = webdriver.Chrome(executable_path="./chromedriver", chrome_options=chrome_options)
+        self.driver.set_window_size(1850, 1000)
+        # pdb.set_trace()
+        self.driver.get(self.domain + '/?overlay=login')
+        self.driver.find_element_by_xpath("//input[@id='email']").send_keys('steven@hooley.me')
+        self.driver.find_element_by_xpath("//input[@id='login-password']").send_keys('Access2017?')
+        self.driver.find_element_by_xpath("//label[@id='remember-me-label']").click()
+        self.driver.find_element_by_xpath("//button[@id='login-submit']").click()
+        time.sleep(1)
+
+    def spider_closed(self, spider):
+        self.driver.quit()
+        # self.display.stop()
 
     def start_requests(self):
         for sport in self.sports_list:
-            uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&preMatchOnly=true' % (sport)
+            uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&liveOnly=true' % (sport)
             req = scrapy.Request(url=self.domain + uri, callback=self.body)
             req.meta['sport_name'] = sport
             yield req        
@@ -110,8 +137,8 @@ class Novada(scrapy.Spider):
                     }
 
                     team2_name = {
-                        'name': self.validate(entry['competitors'][0]['name']),
-                        'competitorId': self.validate(entry['competitors'][0]['id'])
+                        'name': self.validate(entry['competitors'][1]['name']),
+                        'competitorId': self.validate(entry['competitors'][1]['id'])
                     }
 
                     date_time = entry['startTime']
@@ -147,27 +174,27 @@ class Novada(scrapy.Spider):
                                     try:
                                         if outcome['competitorId'] == team1_name['competitorId']:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['handicap'] + ')'
+                                                tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
                                             if 'american' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['price']['american']
+                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['american'] + ')'
 
                                             content_list[team1 + 'spread'] = self.validate(tmp_val1)
                                         else:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['handicap'] + ')'
-
-                                            if 'american' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + outcome['price']['american']
+                                                tmp_val2 = tmp_val2 + outcome['price']['handicap']
                                                 
+                                            if 'american' in outcome['price']:
+                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['american'] + ')'
+
                                             content_list[team2 + 'spread'] = self.validate(tmp_val2)
                                     except:
                                         draw_val = ''
                                         if 'handicap' in outcome['price']:
-                                            draw_val = draw_val + '(' + outcome['price']['handicap'] + ')'
+                                            draw_val = draw_val + outcome['price']['handicap']
 
                                         if 'american' in outcome['price']:
-                                            draw_val = draw_val + outcome['price']['american']
+                                            draw_val = draw_val + '(' + outcome['price']['american'] + ')'
 
                                         content_list['Draw'] = self.validate(draw_val)
 
@@ -181,30 +208,29 @@ class Novada(scrapy.Spider):
                                     try:
                                         if outcome['competitorId'] == team1_name['competitorId']:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['handicap'] + ')'
+                                                tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
                                             if 'american' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['price']['american']
+                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['american'] + ')'
 
                                             content_list[team1 + 'spread'] = self.validate(tmp_val1)
                                         else:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['handicap'] + ')'
-
-                                            if 'american' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + outcome['price']['american']
+                                                tmp_val2 = tmp_val2 + outcome['price']['handicap']
                                                 
+                                            if 'american' in outcome['price']:
+                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['american'] + ')'
+
                                             content_list[team2 + 'spread'] = self.validate(tmp_val2)
                                     except:
                                         draw_val = ''
                                         if 'handicap' in outcome['price']:
-                                            draw_val = draw_val + '(' + outcome['price']['handicap'] + ')'
+                                            draw_val = draw_val + outcome['price']['handicap']
 
                                         if 'american' in outcome['price']:
-                                            draw_val = draw_val + outcome['price']['american']
+                                            draw_val = draw_val + '(' + outcome['price']['american'] + ')'
 
                                         content_list['Draw'] = self.validate(draw_val)
-
 
                             if 'moneyline' in market_data['description'].lower():
                                 team1 = 'Team1_'
@@ -216,27 +242,27 @@ class Novada(scrapy.Spider):
                                     try:
                                         if outcome['competitorId'] == team1_name['competitorId']:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['handicap'] + ')'
+                                                tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
                                             if 'american' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['price']['american']
+                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['american'] + ')'
 
                                             content_list[team1 + 'win'] = self.validate(tmp_val1)
                                         else:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['handicap'] + ')'
-
-                                            if 'american' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + outcome['price']['american']
+                                                tmp_val2 = tmp_val2 + outcome['price']['handicap']
                                                 
+                                            if 'american' in outcome['price']:
+                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['american'] + ')'
+
                                             content_list[team2 + 'win'] = self.validate(tmp_val2)
                                     except:
                                         draw_val = ''
                                         if 'handicap' in outcome['price']:
-                                            draw_val = draw_val + '(' + outcome['price']['handicap'] + ')'
+                                            draw_val = draw_val + outcome['price']['handicap']
 
                                         if 'american' in outcome['price']:
-                                            draw_val = draw_val + outcome['price']['american']
+                                            draw_val = draw_val + '(' + outcome['price']['american'] + ')'
 
                                         content_list['Draw'] = self.validate(draw_val)
 
@@ -250,54 +276,69 @@ class Novada(scrapy.Spider):
                                 for outcome in market_data['outcomes']:
                                     try:
                                         if idx == 0:
-                                            if 'status' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['status'].upper()
-
                                             if 'handicap' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['handicap'] + ')'
+                                                tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
                                             if 'american' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['price']['american']
+                                                tmp_val1 = tmp_val1 + '(' + outcome['price']['american'] + ')'
 
                                             content_list[team1 + 'total'] = self.validate(tmp_val1)
-                                        else:
-                                            if 'status' in outcome['price']:
-                                                tmp_val1 = tmp_val1 + outcome['status'].upper()
+                                        if idx == 1:
                                             if 'handicap' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['handicap'] + ')'
+                                                tmp_val2 = tmp_val2 + outcome['price']['handicap']
+                                                
+                                            if 'american' in outcome['price']:
+                                                tmp_val2 = tmp_val2 + '(' + outcome['price']['american'] + ')'
+
+                                            content_list[team2 + 'total'] = self.validate(tmp_val2)
+                                        if idx == 2:
+                                            draw_val = ''
+                                            if 'handicap' in outcome['price']:
+                                                draw_val = draw_val + outcome['price']['handicap']
 
                                             if 'american' in outcome['price']:
-                                                tmp_val2 = tmp_val2 + outcome['price']['american']
-                                                
-                                            content_list[team2 + 'total'] = self.validate(tmp_val2)
+                                                draw_val = draw_val + '(' + outcome['price']['american'] + ')'
 
+                                            content_list['Draw'] = self.validate(draw_val)
                                         idx = idx + 1
                                     except:
-                                        draw_val = ''
-                                        if 'handicap' in outcome['price']:
-                                            draw_val = draw_val + '(' + outcome['price']['handicap'] + ')'
-
-                                        if 'american' in outcome['price']:
-                                            draw_val = draw_val + outcome['price']['american']
-
-                                        content_list['Draw'] = self.validate(draw_val)
+                                        pass
+                                        
 
                         # item = copy.deepcopy(content_list)
                         for content in content_list:
                             item[content] = content_list[content]
 
-                        item['Team1_name'] = self.validate(team1_name['name'])
-                        item['Team2_name'] = self.validate(team2_name['name'])
+                        item['Team1_name'] = team1_name['name']
+                        item['Team2_name'] = team2_name['name']
                         item['link'] = self.validate(self.domain + link);
                         item['event_id'] = self.validate(event_id)
                         item['Sport_name'] = self.validate(sport_name.replace('-', ' '))
 
                         item['Date'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%Y-%m-%d')
                         item['Time'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%H:%M')
+                        item['link'] = self.validate(self.domain +'/sports'+ link);
+
+                        # req = scrapy.Request(url=item['link'], callback=self.save_data)
+                        # req.meta['item'] = item
+                        # yield req
+
+                        self.driver.get(item['link'])
+                        time.sleep(2)
+                        source = self.driver.page_source.encode("utf8")
+                        tree = etree.HTML(source)
+
+                        try:
+                            item['Team1_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()')[0])
+                        except:
+                            item['Team1_points'] = ''
+                        try:
+                            item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
+                        except:
+                            item['Team2_points'] = ''
 
                         existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
 
-                        # pdb.set_trace()
                         if len(existing_elements) > 0:
                             q = (Bovada.update({
                                     'link' : self.isEmpty(item['link']),
@@ -360,11 +401,11 @@ class Novada(scrapy.Spider):
                                 content_list['team' + str(idx) + '_name'] = outcome['description']
                                 tmp_val2 = ''
 
-                                if 'handicap' in outcome['price']:
-                                    tmp_val2 = tmp_val2 + '(' + outcome['price']['handicap'] + ')'
-
                                 if 'american' in outcome['price']:
-                                    tmp_val2 = tmp_val2 + outcome['price']['american']
+                                    tmp_val2 = tmp_val2 + '(' + outcome['price']['american'] + ')'
+
+                                if 'handicap' in outcome['price']:
+                                    tmp_val2 = tmp_val2 + outcome['price']['handicap']
                                     
                                 content_list['team' + str(idx) + 'value'] = self.validate(tmp_val2)
 
@@ -383,7 +424,6 @@ class Novada(scrapy.Spider):
                             existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
 
                             if len(existing_elements) > 0:
-                                pdb.set_trace()
                                 q = (Bovada.update({
                                         'link' : self.isEmpty(item['link']),
                                         'Date' : self.isEmpty(item['Date']),
@@ -406,6 +446,55 @@ class Novada(scrapy.Spider):
                             yield item
         # except:
         #     pass
+
+    def save_data(self, response):
+        item = ChainItem()
+        item = copy.deepcopy(response.meta['item'])
+
+        item['Team1_points'] = self.validate(response.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()').extract_first())
+        item['Team2_points'] = self.validate(response.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()').extract_first())
+        existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
+        
+        if len(existing_elements) > 0:
+            q = (Bovada.update({
+                    'link' : self.isEmpty(item['link']),
+                    'Date' : self.isEmpty(item['Date']),
+                    'Time' : self.isEmpty(item['Time']),
+                    'Team1_name' : self.isEmpty(item['Team1_name']),
+                    'Sport_name' : self.isEmpty(item['Sport_name']),
+                    'Team1_points' : self.isEmpty(item['Team1_points']),
+                    'Team1_spread' : self.isEmpty(item['Team1_spread']),
+                    'Team1_win' : self.isEmpty(item['Team1_win']),
+                    'Team1_total' : self.isEmpty(item['Team1_total']),
+                    'Team2_name' : self.isEmpty(item['Team2_name']),
+                    'Team2_points' : self.isEmpty(item['Team2_points']),
+                    'Team2_spread' : self.isEmpty(item['Team2_spread']),
+                    'Team2_win' : self.isEmpty(item['Team2_win']),
+                    'Team2_total' : self.isEmpty(item['Team2_total']),
+                    'Draw' : self.isEmpty(item['Draw'])
+                })
+                .where(Bovada.event_id == item['event_id']))
+            q.execute()
+
+        else:
+            Bovada.create(link = self.isEmpty(item['link']),
+                Sport_name = self.isEmpty(item['Sport_name']),
+                Date = self.isEmpty(item['Date']),
+                Time = self.isEmpty(item['Time']),
+                Team1_name = self.isEmpty(item['Team1_name']),
+                Team1_points = self.isEmpty(item['Team1_points']),
+                Team1_spread = self.isEmpty(item['Team1_spread']),
+                Team1_win = self.isEmpty(item['Team1_win']),
+                Team1_total = self.isEmpty(item['Team1_total']),
+                Team2_name = self.isEmpty(item['Team2_name']),
+                Team2_points = self.isEmpty(item['Team2_points']),
+                Team2_spread = self.isEmpty(item['Team2_spread']),
+                Team2_win = self.isEmpty(item['Team2_win']),
+                Team2_total = self.isEmpty(item['Team2_total']),
+                event_id = self.isEmpty(item['event_id']),
+                Draw = self.isEmpty(item['Draw']))
+        
+        yield item
 
     def validate(self, item):
         try:
