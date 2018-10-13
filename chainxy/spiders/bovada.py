@@ -26,8 +26,8 @@ from pyvirtualdisplay import Display
 import pdb
 
 
-db = SqliteDatabase('bovada.db')
-# db = MySQLDatabase('my_app', user='root', password='Admimn1234!@#$', host='localhost', port=3306)
+# db = SqliteDatabase('bovada.db')
+db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
@@ -96,8 +96,8 @@ class Novada(scrapy.Spider):
         chrome_options = Options()
         chrome_options.add_argument('--dns-prefetch-disable')
 
-        # self.display = Display(visible=0, size=(1650, 1248))
-        # self.display.start()
+        self.display = Display(visible=0, size=(1650, 1248))
+        self.display.start()
 
         self.driver = webdriver.Chrome(executable_path="./chromedriver", chrome_options=chrome_options)
         self.driver.set_window_size(1850, 1000)
@@ -111,7 +111,7 @@ class Novada(scrapy.Spider):
 
     def spider_closed(self, spider):
         self.driver.quit()
-        # self.display.stop()
+        self.display.stop()
 
     def start_requests(self):
         for sport in self.sports_list:
