@@ -96,14 +96,15 @@ class Novada(scrapy.Spider):
         chrome_options = Options()
         chrome_options.add_argument('--dns-prefetch-disable')
 
-        self.display = Display(visible=0, size=(1650, 1248))
-        self.display.start()
+        # self.display = Display(visible=0, size=(1650, 1248))
+        # self.display.start()
 
-        self.driver = webdriver.Chrome(executable_path="./chromedriver", chrome_options=chrome_options)
+        self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
         self.driver.set_window_size(1850, 1000)
-        # pdb.set_trace()
+
         self.driver.get(self.domain + '/?overlay=login')
-        self.driver.find_element_by_xpath("//input[@id='email']").send_keys('steven@hooley.me')
+        element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
+        element.send_keys('steven@hooley.me')
         self.driver.find_element_by_xpath("//input[@id='login-password']").send_keys('Access2017?')
         self.driver.find_element_by_xpath("//label[@id='remember-me-label']").click()
         self.driver.find_element_by_xpath("//button[@id='login-submit']").click()
@@ -111,7 +112,7 @@ class Novada(scrapy.Spider):
 
     def spider_closed(self, spider):
         self.driver.quit()
-        self.display.stop()
+        # self.display.stop()
 
     def start_requests(self):
         for sport in self.sports_list:
