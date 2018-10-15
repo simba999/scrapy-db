@@ -21,13 +21,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from pyvirtualdisplay import Display
 
 import pdb
 
 
-# db = SqliteDatabase('bovada.db')
-db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
+db = SqliteDatabase('bovada.db')
+# db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
@@ -93,17 +94,23 @@ class Novada(scrapy.Spider):
     ]
 
     def __init__(self):
-        chrome_options = Options()
-        chrome_options.add_argument('--dns-prefetch-disable')
 
         # self.display = Display(visible=0, size=(1650, 1248))
         # self.display.start()
 
-        self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
-        self.driver.set_window_size(1850, 1000)
+        # self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
 
-        self.driver.get(self.domain + '/?overlay=login')
-        element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
+        # options = selenium.webdriver.ChromeOptions()
+        # options.add_argument('headless')
+
+        chrome_options = Options()
+        options.add_argument("--headless")
+        self.driver = webdriver.Firefox(executable_path="./geckodriver", firefox_options=chrome_options)
+        self.driver.set_window_size(1450, 1000)
+
+        self.driver.get(self.domain + '/sports?overlay=login')
+        time.sleep(2)
+        element = WebDriverWait(self.driver, 100).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
         element.send_keys('steven@hooley.me')
         self.driver.find_element_by_xpath("//input[@id='login-password']").send_keys('Access2017?')
         self.driver.find_element_by_xpath("//label[@id='remember-me-label']").click()

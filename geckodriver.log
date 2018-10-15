@@ -1,0 +1,21 @@
+1539597227297	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "--dns-prefetch-disable" "headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0lsjZmkR2KZA"
+1539597230880	Marionette	INFO	Listening on port 37575
+1539597230909	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539597230956	Marionette	DEBUG	[2147483649] Frame script loaded
+1539597230976	Marionette	DEBUG	[2147483649] Frame script registered
+1539597231133	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
+1539597233601	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
+1539597233713	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports?overlay=login
+1539597237994	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports?overlay=login
+1539597240389	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539597240643	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539597242259	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports?overlay=login
+1539597242320	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports?overlay=login
+1539597242320	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports?overlay=login
+1539597242376	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483661
+1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483653
+1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483656
+1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483659
+1539597243391	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+Sandbox: Unexpected EOF, op 0 flags 0302 path /dev/shm/org.chromium.gq8QWu

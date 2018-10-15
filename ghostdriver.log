@@ -1,73 +1,124 @@
-[INFO  - 2018-10-15T08:13:26.140Z] GhostDriver - Main - running on port 46235
-[INFO  - 2018-10-15T08:13:27.083Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2018-10-15T08:13:27.083Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.customHeaders:  - {}
-[INFO  - 2018-10-15T08:13:27.084Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2018-10-15T08:13:27.084Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 31799f30-d052-11e8-b661-a9d3f67a0c97
-[ERROR - 2018-10-15T08:13:32.399Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: TypeError: undefined is not a function (evaluating 'e.httpIFrame.contentWindow.hasOwnProperty("XMLHttpRequest")')
+[INFO  - 2018-10-15T09:26:55.274Z] GhostDriver - Main - running on port 58194
+[INFO  - 2018-10-15T09:26:56.210Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-10-15T09:26:56.210Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.customHeaders:  - {}
+[INFO  - 2018-10-15T09:26:56.210Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-10-15T09:26:56.210Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 7585c5f0-d05c-11e8-bae1-23d9f72e009b
+[ERROR - 2018-10-15T09:27:03.954Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.onError - msg: RangeError: Maximum call stack size exceeded.
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:32.400Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  onload (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:37.733Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: TypeError: undefined is not a function (evaluating 'e.httpIFrame.contentWindow.hasOwnProperty("XMLHttpRequest")')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:37.733Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  onload (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:38.977Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: ERROR Error: [mobx.array] Index out of bounds, function (t) {return xn(t,e,n);} is larger than 1
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:38.977Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  Tt (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:41.155Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: TypeError: undefined is not a function (evaluating 'e.httpIFrame.contentWindow.hasOwnProperty("XMLHttpRequest")')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:41.155Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  onload (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:41.505Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: RangeError: Maximum call stack size exceeded.
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:41.505Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
+[ERROR - 2018-10-15T09:27:03.954Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.onError - stack:
   (anonymous function) (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:43.866Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: TypeError: undefined is not a function (evaluating 'e.httpIFrame.contentWindow.hasOwnProperty("XMLHttpRequest")')
+[ERROR - 2018-10-15T09:27:04.439Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.onError - msg: TypeError: undefined is not a function (evaluating 'e.httpIFrame.contentWindow.hasOwnProperty("XMLHttpRequest")')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:43.866Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
+[ERROR - 2018-10-15T09:27:04.439Z] Session [7585c5f0-d05c-11e8-bae1-23d9f72e009b] - page.onError - stack:
   onload (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:45.136Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: ERROR Error: [mobx.array] Index out of bounds, function (t) {return xn(t,e,n);} is larger than 1
+[ERROR - 2018-10-15T09:27:06.701Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595626676
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:45.136Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  Tt (https://www.bovada.lv/assets/js/main.8765dc502338e80dd691.bundle.js:1)
+[ERROR - 2018-10-15T09:27:07.672Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595627650
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:45.993Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - msg: Error: _loadLabels() cannot get file from: assets/labels/en.json?v=1.44
+[ERROR - 2018-10-15T09:27:08.646Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595628625
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-10-15T08:13:45.993Z] Session [31799f30-d052-11e8-b661-a9d3f67a0c97] - page.onError - stack:
-  (anonymous function) (https://games.bovada.lv/static/casino/casino-minigames/widget/js/rp/mg/widget/mgWidget.js?v=1.44:1)
-  c (https://games.bovada.lv/static/casino/casino-minigames/widget/js/lib/jquery.js?v=1.44:2)
-  fireWith (https://games.bovada.lv/static/casino/casino-minigames/widget/js/lib/jquery.js?v=1.44:2)
-  n (https://games.bovada.lv/static/casino/casino-minigames/widget/js/lib/jquery.js?v=1.44:3)
-  t (https://games.bovada.lv/static/casino/casino-minigames/widget/js/lib/jquery.js?v=1.44:3)
-  openUrl (:0)
-  open (phantomjs://platform/webpage.js:281)
-  (anonymous function) (phantomjs://code/session_request_handler.js:495)
-  _execFuncAndWaitForLoadDecorator (phantomjs://code/session.js:212)
-  _postUrlCommand (phantomjs://code/session_request_handler.js:494)
-  _handle (phantomjs://code/session_request_handler.js:91)
-  _reroute (phantomjs://code/request_handler.js:61)
-  _handle (phantomjs://code/router_request_handler.js:78)
+[ERROR - 2018-10-15T09:27:09.622Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595629601
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:10.593Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595630574
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:11.564Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595631544
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:12.540Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595632515
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:13.512Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595633492
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:14.492Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595634468
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:15.468Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595635445
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:16.441Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595636419
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:17.422Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595637402
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:18.398Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595638380
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:19.365Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595639345
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:20.343Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595640322
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:21.321Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595641301
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:22.307Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595642278
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:23.284Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595643264
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:24.262Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595644242
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:25.245Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595645221
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:26.219Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595646201
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:27.170Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595647147
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:28.138Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595648117
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:29.104Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595649085
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:30.073Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595650053
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:31.051Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595651019
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:32.019Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595651999
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:32.993Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595652970
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:33.965Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595653943
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:34.912Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595654892
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:35.882Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595655861
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:36.852Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595656831
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:37.826Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595657804
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:38.797Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595658778
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-10-15T09:27:39.761Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1539595659727
 
   phantomjs://platform/console++.js:263 in error
