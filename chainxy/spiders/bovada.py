@@ -229,7 +229,7 @@ class Novada(scrapy.Spider):
 
                                 for outcome in market_data['outcomes']:
                                     try:
-                                        if outcome['competitorId'] == team1_name['competitorId']:
+                                        if outcome['competitorId'] == team1_name['competitorId'].decode():
                                             if 'handicap' in outcome['price']:
                                                 tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
@@ -265,7 +265,7 @@ class Novada(scrapy.Spider):
                                     try:
                                         print('-------------\n')
                                         print(outcome, market_data)
-                                        if outcome['competitorId'] == team1_name['competitorId']:
+                                        if outcome['competitorId'] == team1_name['competitorId'].decode():
                                             if 'handicap' in outcome['price']:
                                                 tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
@@ -357,20 +357,22 @@ class Novada(scrapy.Spider):
 
                         try:
                             self.driver.get(detail_url)
-                        except:
-                            pdb.set_trace()
-                        time.sleep(2)
-                        source = self.driver.page_source.encode("utf8")
-                        tree = etree.HTML(source)
+                        
+                            time.sleep(2)
+                            source = self.driver.page_source.encode("utf8")
+                            tree = etree.HTML(source)
 
-                        try:
-                            item['Team1_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()')[0])
+                            try:
+                                item['Team1_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()')[0])
+                            except:
+                                item['Team1_points'] = ''
+
+                            try:
+                                item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
+                            except:
+                                item['Team2_points'] = ''
                         except:
-                            item['Team1_points'] = ''
-                        try:
-                            item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
-                        except:
-                            item['Team2_points'] = ''
+                            pass
 
                         existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
 
