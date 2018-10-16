@@ -20,7 +20,6 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
 from pyvirtualdisplay import Display
 
@@ -103,10 +102,21 @@ class Novada(scrapy.Spider):
         # options = selenium.webdriver.ChromeOptions()
         # options.add_argument('headless')
 
-        chrome_options = Options()
-        options.add_argument("--headless")
-        self.driver = webdriver.Firefox(executable_path="./geckodriver", firefox_options=chrome_options)
-        self.driver.set_window_size(1450, 1000)
+        # options = Options()
+        # options.add_argument("--headless")
+        # self.driver = webdriver.Firefox(executable_path="./geckodriver", firefox_options=options)
+        # self.driver.set_window_size(1450, 1000)
+
+        prof = webdriver.FirefoxProfile()
+        prof.set_preference('dom.webnotifications.enabled', False)
+
+        opts = webdriver.FirefoxOptions()
+        opts.set_headless(headless=True)
+
+        self.driver = webdriver.Firefox( 
+                firefox_profile=prof,
+                firefox_options=opts,
+                executable_path='./geckodriver')
 
         self.driver.get(self.domain + '/sports?overlay=login')
         time.sleep(2)
@@ -319,13 +329,13 @@ class Novada(scrapy.Spider):
 
                         item['Team1_name'] = team1_name['name']
                         item['Team2_name'] = team2_name['name']
-                        item['link'] = self.validate(self.domain + link);
+                        # item['link'] = self.validate(self.domain + link);
                         item['event_id'] = self.validate(event_id)
                         item['Sport_name'] = self.validate(sport_name.replace('-', ' '))
 
                         item['Date'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%Y-%m-%d')
                         item['Time'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%H:%M')
-                        item['link'] = self.validate(self.domain +'/sports'+ link);
+                        item['link'] = self.validate(self.domain +'/sports'+ link.decode());
 
                         # req = scrapy.Request(url=item['link'], callback=self.save_data)
                         # req.meta['item'] = item
