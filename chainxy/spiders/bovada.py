@@ -263,6 +263,8 @@ class Novada(scrapy.Spider):
 
                                 for outcome in market_data['outcomes']:
                                     try:
+                                        print('-------------\n')
+                                        print(outcome, market_data)
                                         if outcome['competitorId'] == team1_name['competitorId']:
                                             if 'handicap' in outcome['price']:
                                                 tmp_val1 = tmp_val1 + outcome['price']['handicap']
@@ -352,8 +354,11 @@ class Novada(scrapy.Spider):
                             detail_url = item['link'].decode()
                         except:
                             detail_url = item['link']
-                            
-                        self.driver.get(detail_url)
+
+                        try:
+                            self.driver.get(detail_url)
+                        except:
+                            pdb.set_trace()
                         time.sleep(2)
                         source = self.driver.page_source.encode("utf8")
                         tree = etree.HTML(source)
