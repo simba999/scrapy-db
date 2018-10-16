@@ -20,8 +20,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from pyvirtualdisplay import Display
 
 import pdb
@@ -95,20 +95,34 @@ class Novada(scrapy.Spider):
 
     def __init__(self):
 
-        # self.display = Display(visible=0, size=(1650, 1248))
-        # self.display.start()
+        self.display = Display(visible=0, size=(1650, 1248))
+        self.display.start()
 
         # self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
 
         # options = selenium.webdriver.ChromeOptions()
         # options.add_argument('headless')
+       
+        """
+        prof = webdriver.FirefoxProfile()
+        prof.set_preference('dom.webnotifications.enabled', False)
 
-        chrome_options = Options()
-        options.add_argument("--headless")
-        self.driver = webdriver.Firefox(executable_path="./geckodriver", firefox_options=chrome_options)
-        self.driver.set_window_size(1450, 1000)
+        options = Options()
+        options.headless = True
 
-        self.driver.get(self.domain + '/sports?overlay=login')
+        caps = DesiredCapabilities.FIREFOX
+        caps['marionette'] = False
+        #caps['binary'] = '/usr/bin/firefox'
+
+        self.driver = webdriver.Firefox( 
+                firefox_profile=prof,
+                #capabilities=caps,
+                firefox_options=options,
+                executable_path='./geckodriver')
+        """
+        self.driver = webdriver.Firefox(executable_path='./geckodriver')
+
+        self.driver.get(self.domain + '/?overlay=login')
         time.sleep(2)
         element = WebDriverWait(self.driver, 100).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
         element.send_keys('steven@hooley.me')
@@ -119,7 +133,7 @@ class Novada(scrapy.Spider):
 
     def spider_closed(self, spider):
         self.driver.quit()
-        # self.display.stop()
+        self.display.stop()
 
     def start_requests(self):
         for sport in self.sports_list:
@@ -319,19 +333,21 @@ class Novada(scrapy.Spider):
 
                         item['Team1_name'] = team1_name['name']
                         item['Team2_name'] = team2_name['name']
-                        item['link'] = self.validate(self.domain + link);
                         item['event_id'] = self.validate(event_id)
                         item['Sport_name'] = self.validate(sport_name.replace('-', ' '))
 
                         item['Date'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%Y-%m-%d')
                         item['Time'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%H:%M')
+                        #print(item)
+                        #pdb.set_trace()
+                        
                         item['link'] = self.validate(self.domain +'/sports'+ link);
-
+                        print(item)
                         # req = scrapy.Request(url=item['link'], callback=self.save_data)
                         # req.meta['item'] = item
                         # yield req
-
-                        self.driver.get(item['link'])
+                        
+                        self.driver.get(item['link'].decode())
                         time.sleep(2)
                         source = self.driver.page_source.encode("utf8")
                         tree = etree.HTML(source)

@@ -1,21 +1,151 @@
-1539597227297	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "--dns-prefetch-disable" "headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0lsjZmkR2KZA"
-1539597230880	Marionette	INFO	Listening on port 37575
-1539597230909	Marionette	WARN	TLS certificate errors will be ignored for this session
-1539597230956	Marionette	DEBUG	[2147483649] Frame script loaded
-1539597230976	Marionette	DEBUG	[2147483649] Frame script registered
-1539597231133	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
-1539597233601	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
-1539597233713	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports?overlay=login
-1539597237994	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports?overlay=login
-1539597240389	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
-1539597240643	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
-1539597242259	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports?overlay=login
-1539597242320	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports?overlay=login
-1539597242320	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports?overlay=login
-1539597242376	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
-1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483661
-1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483653
-1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483656
-1539597242857	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483659
-1539597243391	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
-Sandbox: Unexpected EOF, op 0 flags 0302 path /dev/shm/org.chromium.gq8QWu
+1539600362844	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.VyY9kXoCnR5j"
+
+(firefox:3990): LIBDBUSMENU-GLIB-WARNING **: 10:46:04.348: Unable to get session bus: Failed to execute child process “dbus-launch” (No such file or directory)
+1539600365274	Marionette	INFO	Listening on port 39779
+1539600365386	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539600365511	Marionette	DEBUG	[2147483649] Frame script loaded
+1539600365514	Marionette	DEBUG	[2147483649] Frame script registered
+1539600365539	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
+1539600366057	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
+1539600366235	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/?overlay=login
+JavaScript error: https://www.bovada.lv/%7B%7D, line 1: SyntaxError: expected expression, got '<'
+1539600369954	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/?overlay=login
+1539600372498	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539600372752	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539600374283	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/?overlay=login
+1539600374744	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/?overlay=login
+1539600374746	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/?overlay=login
+1539600374886	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539600374896	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483653
+1539600374897	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483656
+1539600375935	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539600378750	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539600379027	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539600379029	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports/baseball/japan/npb-playoffs/hokkaido-nippon-ham-fighters-fukuoka-softbank-hawks-201810150500
+1539600379209	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/soccer/international/international-youth/friendly-u19/latvia-u19-greece-u19-201810150600
+1539600379252	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483662
+1539600379253	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483660
+1539600379258	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483664
+1539600381045	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/soccer/international/international-youth/friendly-u19/latvia-u19-greece-u19-201810150600
+1539600388203	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports/soccer/international/international-youth/friendly-u19/latvia-u19-greece-u19-201810150600
+1539600389097	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports/soccer/international/international-youth/friendly-u19/latvia-u19-greece-u19-201810150600
+1539600389115	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports/soccer/international/international-youth/friendly-u19/latvia-u19-greece-u19-201810150600
+1539600390630	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/soccer/europe/russia/premier-league-u21/zenit-u21-spartak-moskva-u21-201810150500
+1539600390697	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483671
+1539600390697	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483669
+[Parent 3990, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x4A0017,name=PHttpChannel::Msg_DeleteSelf) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x4A0017,name=PHttpChannel::Msg_DeleteSelf) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x4A0017,name=PHttpChannel::Msg_DeleteSelf) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x4A0017,name=PHttpChannel::Msg_DeleteSelf) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x170080,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1539600469938	Marionette	INFO	Stopped listening on port 39779
+1539600666995	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.w2G7Djwhd2Fa"
+
+(firefox:4159): LIBDBUSMENU-GLIB-WARNING **: 10:51:08.764: Unable to get session bus: Failed to execute child process “dbus-launch” (No such file or directory)
+1539600669702	Marionette	INFO	Listening on port 40543
+1539600669724	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539600669838	Marionette	DEBUG	[2147483649] Frame script loaded
+1539600669842	Marionette	DEBUG	[2147483649] Frame script registered
+1539600669863	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
+1539600670123	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
+1539600670436	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/?overlay=login
+JavaScript error: https://www.bovada.lv/%7B%7D, line 1: SyntaxError: expected expression, got '<'
+1539600673268	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/?overlay=login
+1539600675890	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539600676166	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539600758615	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.TcTeXFDQFiXa"
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (62): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (70): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (69): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (63): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (66): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4382, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x170080,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+(firefox:4382): LIBDBUSMENU-GLIB-WARNING **: 10:53:27.142: Unable to get session bus: Failed to execute child process “dbus-launch” (No such file or directory)
+1539600878663	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.wI6D6looAhO0"
+JavaScript error: jar:file:///usr/lib/firefox/omni.ja!/components/nsPrompter.js, line 340: NS_ERROR_NOT_AVAILABLE: Cannot call openModalWindow on a hidden window
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (62): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (70): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (69): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (63): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (66): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Parent 4562, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-IVlCbR/firefox-62.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+JavaScript error: jar:file:///usr/lib/firefox/omni.ja!/components/nsPrompter.js, line 340: NS_ERROR_NOT_AVAILABLE: Cannot call openModalWindow on a hidden window
+1539675173286	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.DfloGfV29D7D"
+
+(firefox:8315): LIBDBUSMENU-GLIB-WARNING **: 07:32:55.634: Unable to get session bus: Failed to execute child process “dbus-launch” (No such file or directory)
+1539675176673	Marionette	INFO	Listening on port 46147
+1539675176706	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539675176851	Marionette	DEBUG	[2147483649] Frame script loaded
+1539675176868	Marionette	DEBUG	[2147483649] Frame script registered
+1539675176953	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
+1539675177763	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
+1539675177929	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/?overlay=login
+1539675180626	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/?overlay=login
+1539675183136	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539675183401	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539675449190	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/
+1539675449392	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/
+1539675449393	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/
+1539675449525	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539675449604	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483662
+1539675450554	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677153374	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.eOrv5htbL9js"
+
+(firefox:8822): LIBDBUSMENU-GLIB-WARNING **: 08:05:55.228: Unable to get session bus: Failed to execute child process “dbus-launch” (No such file or directory)
+1539677156097	Marionette	INFO	Listening on port 41921
+1539677156212	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539677156312	Marionette	DEBUG	[2147483649] Frame script loaded
+1539677156319	Marionette	DEBUG	[2147483649] Frame script registered
+1539677156338	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for about:blank
+1539677156592	Marionette	DEBUG	[2147483649] Received DOM event pagehide for about:blank
+1539677156756	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/?overlay=login
+1539677159441	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/?overlay=login
+1539677161971	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539677162249	Marionette	DEBUG	[2147483649] Canceled page load listener because no navigation has been detected
+1539677164068	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/?overlay=login
+JavaScript error: , line 0: uncaught exception: Response with status: 0  for URL: null
+1539677164142	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/?overlay=login
+1539677164143	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/?overlay=login
+1539677164338	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677164341	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483653
+1539677164341	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483655
+1539677164347	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483658
+1539677165274	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677168408	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677168704	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677168706	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports/basketball/europe/russia/vtb-u21-league/unics-u21-parma-u21-201810160300
+1539677168826	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/e-gerasimov-d-dzumhur-201810160405
+1539677168912	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483664
+1539677168913	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483662
+1539677170410	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/e-gerasimov-d-dzumhur-201810160405
+1539677172484	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/e-gerasimov-d-dzumhur-201810160405
+1539677172717	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/e-gerasimov-d-dzumhur-201810160405
+1539677172718	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/e-gerasimov-d-dzumhur-201810160405
+1539677172933	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/r-berankis-d-istomin-201810160405
+1539677172938	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483670
+1539677172938	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483668
+1539677174691	Marionette	DEBUG	[2147483649] Received DOM event pageshow for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/r-berankis-d-istomin-201810160405
+1539677177585	Marionette	DEBUG	[2147483649] Received DOM event beforeunload for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/r-berankis-d-istomin-201810160405
+JavaScript error: , line 0: uncaught exception: Response with status: 0  for URL: null
+1539677178160	Marionette	DEBUG	[2147483649] Received DOM event pagehide for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/r-berankis-d-istomin-201810160405
+1539677178162	Marionette	DEBUG	[2147483649] Received DOM event unload for https://www.bovada.lv/sports/tennis/atp-tour/atp-tour-kremlin-cup-moscow/r-berankis-d-istomin-201810160405
+1539677179516	Marionette	DEBUG	[2147483649] Received DOM event DOMContentLoaded for https://www.bovada.lv/sports/tennis/wta-tour/wta-tour-kremlin-cup-moscow/e-makarova-o-jabeur-201810160405
+1539677179571	Marionette	DEBUG	[2147483649] Received observer notification outer-window-destroyed for 2147483674
+out of memory: 0x0000000000020000 bytes requested
