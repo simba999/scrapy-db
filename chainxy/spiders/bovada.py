@@ -27,8 +27,8 @@ from pyvirtualdisplay import Display
 import pdb
 
 
-db = SqliteDatabase('bovada.db')
-# db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
+# db = SqliteDatabase('bovada.db')
+db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
@@ -69,28 +69,28 @@ class Novada(scrapy.Spider):
         'soccer',
         'hockey',
         'tennis'
-        # 'boxing',
-        # 'cricket',
-        # 'darts',
-        # 'entertainment',
-        # 'esports',
-        # 'futsal',
-        # 'gaelic-games',
-        # 'golf',
-        # 'handball',
-        # 'horses-futures-props',
-        # 'motor-sports',
-        # 'numbers-game',
-        # 'politics',
-        # 'rugby-league',
-        # 'rugby-union',
-        # 'snooker',
-        # 'table-tennis',
-        # 'ufc-mma',
-        # 'virtual-sports',
-        # 'volleyball',
-        # 'winter-olympics',
-        # 'winter-sports'
+        'boxing',
+        'cricket',
+        'darts',
+        'entertainment',
+        'esports',
+        'futsal',
+        'gaelic-games',
+        'golf',
+        'handball',
+        'horses-futures-props',
+        'motor-sports',
+        'numbers-game',
+        'politics',
+        'rugby-league',
+        'rugby-union',
+        'snooker',
+        'table-tennis',
+        'ufc-mma',
+        'virtual-sports',
+        'volleyball',
+        'winter-olympics',
+        'winter-sports'
     ]
 
     def __init__(self):
@@ -123,7 +123,7 @@ class Novada(scrapy.Spider):
         self.driver = webdriver.Firefox(executable_path='./geckodriver')
 
         self.driver.get(self.domain + '/?overlay=login')
-
+        print(self.domain + '/sports?overlay=login')
         time.sleep(2)
         element = WebDriverWait(self.driver, 100).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
         element.send_keys('steven@hooley.me')
@@ -358,7 +358,7 @@ class Novada(scrapy.Spider):
                         try:
                             self.driver.get(detail_url)
                         
-                            time.sleep(2)
+                            time.sleep(3)
                             source = self.driver.page_source.encode("utf8")
                             tree = etree.HTML(source)
 
@@ -371,6 +371,7 @@ class Novada(scrapy.Spider):
                                 item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
                             except:
                                 item['Team2_points'] = ''
+                            print('D*********************', item)
                         except:
                             pass
 
