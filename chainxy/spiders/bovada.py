@@ -138,11 +138,15 @@ class Novada(scrapy.Spider):
         self.display.stop()
 
     def start_requests(self):
+        """
         for sport in self.sports_list:
             uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&liveOnly=true' % (sport)
             req = scrapy.Request(url=self.domain + uri, callback=self.body)
             req.meta['sport_name'] = sport
-            yield req        
+            yield req
+        """
+        with open('test.txt', 'w') as fp:
+            fp.write('Test bye')
 
     def body(self, response):
         # try:
@@ -198,7 +202,7 @@ class Novada(scrapy.Spider):
                                 
                                 for outcome in market_data['outcomes']:
                                     try:
-                                        if outcome['competitorId'] == team1_name['competitorId']:
+                                        if outcome['competitorId'] == team1_name['competitorId'].decode():
                                             if 'handicap' in outcome['price']:
                                                 tmp_val1 = tmp_val1 + outcome['price']['handicap']
 
@@ -345,7 +349,6 @@ class Novada(scrapy.Spider):
                         item['Date'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%Y-%m-%d')
                         item['Time'] = datetime.datetime.utcfromtimestamp(int(date_time) / 1000).strftime('%H:%M')
                         #print(item)
-                        #pdb.set_trace()
                         
                         item['link'] = self.validate(self.domain +'/sports'+ link);
                         print(item)
