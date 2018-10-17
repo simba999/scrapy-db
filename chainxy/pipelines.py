@@ -40,7 +40,8 @@ class ChainxyPipeline(object):
             'Team2_spread',
             'Team2_win',
             'Team2_total',
-            'Draw'
+            'Draw',
+            'last_update'
         ]
         self.exporter.start_exporting()        
 

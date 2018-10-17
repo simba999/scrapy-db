@@ -25,4 +25,5 @@ class ChainItem(Item):
     Draw = Field()
     link = Field()
     Team_list = Field()
+    last_update = Field()
 

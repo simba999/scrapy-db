@@ -53,6 +53,7 @@ class Bovada(BaseModel):
     Draw = CharField(null=True)
     link = CharField(null=True)
     Team_list = CharField(null=True)
+    last_update = CharField(null=False)
 
 db.connect()
 db.create_tables([Bovada])
@@ -184,6 +185,8 @@ class Novada(scrapy.Spider):
                         item['Team2_total'] = ''
                         item['Draw'] = ''
                         item['link'] = ''
+                        item['last_update'] = ''
+
                         content_list = dict()
 
                         for market_data in group['markets']:
@@ -376,7 +379,8 @@ class Novada(scrapy.Spider):
                             pass
 
                         existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
-
+                        last_update = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+                        item['last_update'] = last_update
                         if len(existing_elements) > 0:
                             q = (Bovada.update({
                                     'link' : self.isEmpty(item['link']),
@@ -393,7 +397,8 @@ class Novada(scrapy.Spider):
                                     'Team2_spread' : self.isEmpty(item['Team2_spread']),
                                     'Team2_win' : self.isEmpty(item['Team2_win']),
                                     'Team2_total' : self.isEmpty(item['Team2_total']),
-                                    'Draw' : self.isEmpty(item['Draw'])
+                                    'Draw' : self.isEmpty(item['Draw']),
+                                    'last_update': last_update
                                 })
                                 .where(Bovada.event_id == item['event_id']))
                             q.execute()
@@ -414,7 +419,8 @@ class Novada(scrapy.Spider):
                                 Team2_win = self.isEmpty(item['Team2_win']),
                                 Team2_total = self.isEmpty(item['Team2_total']),
                                 event_id = self.isEmpty(item['event_id']),
-                                Draw = self.isEmpty(item['Draw']))
+                                Draw = self.isEmpty(item['Draw']),
+                                last_update=last_update)
                 
                         yield item
         
@@ -460,13 +466,16 @@ class Novada(scrapy.Spider):
                             item['Team_list'] = json.dumps(self.validate(content_list))
 
                             existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
+                            last_update = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+                            item['last_update'] = last_update
 
                             if len(existing_elements) > 0:
                                 q = (Bovada.update({
                                         'link' : self.isEmpty(item['link']),
                                         'Date' : self.isEmpty(item['Date']),
                                         'Time' : self.isEmpty(item['Time']),
-                                        'Team_list' : self.isEmpty(item['Team_list'])
+                                        'Team_list' : self.isEmpty(item['Team_list']),
+                                        'last_update' : last_update
                                     })
                                     .where(Bovada.event_id == item['event_id']))
                                 q.execute()
@@ -477,10 +486,9 @@ class Novada(scrapy.Spider):
                                     Date = self.isEmpty(item['Date']),
                                     Time = self.isEmpty(item['Time']),
                                     event_id = self.isEmpty(item['event_id']),
-                                    Team_list = self.isEmpty(item['Team_list']))
+                                    Team_list = self.isEmpty(item['Team_list']),
+                                    last_update=last_update)
                         
-                            yield item
-                            
                             yield item
         # except:
         #     pass
