@@ -95,32 +95,8 @@ class Novada(scrapy.Spider):
     ]
 
     def __init__(self):
-
         self.display = Display(visible=0, size=(1650, 1248))
         self.display.start()
-
-        # self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
-
-        # options = selenium.webdriver.ChromeOptions()
-        # options.add_argument('headless')
-       
-        """
-        prof = webdriver.FirefoxProfile()
-        prof.set_preference('dom.webnotifications.enabled', False)
-
-        options = Options()
-        options.headless = True
-
-        caps = DesiredCapabilities.FIREFOX
-        caps['marionette'] = False
-        #caps['binary'] = '/usr/bin/firefox'
-
-        self.driver = webdriver.Firefox( 
-                firefox_profile=prof,
-                #capabilities=caps,
-                firefox_options=options,
-                executable_path='./geckodriver')
-        """
         self.driver = webdriver.Firefox(executable_path='./geckodriver')
 
         self.driver.get(self.domain + '/?overlay=login')
@@ -138,15 +114,11 @@ class Novada(scrapy.Spider):
         self.display.stop()
 
     def start_requests(self):
-        """
         for sport in self.sports_list:
             uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&liveOnly=true' % (sport)
             req = scrapy.Request(url=self.domain + uri, callback=self.body)
             req.meta['sport_name'] = sport
             yield req
-        """
-        with open('test.txt', 'w') as fp:
-            fp.write('Test bye')
 
     def body(self, response):
         # try:
