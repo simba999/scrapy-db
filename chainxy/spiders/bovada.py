@@ -20,7 +20,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from pyvirtualdisplay import Display
 
@@ -95,7 +96,6 @@ class Novada(scrapy.Spider):
     ]
 
     def __init__(self):
-
         self.display = Display(visible=0, size=(1650, 1248))
         self.display.start()
 
@@ -121,7 +121,9 @@ class Novada(scrapy.Spider):
                 firefox_options=options,
                 executable_path='./geckodriver')
         """
-        self.driver = webdriver.Firefox(executable_path='./geckodriver')
+       
+        #self.driver = webdriver.Firefox(executable_path='./geckodriver')
+        self.driver = webdriver.Chrome(executable_path="./chromedriver")
 
         self.driver.get(self.domain + '/?overlay=login')
         print(self.domain + '/sports?overlay=login')
@@ -138,15 +140,11 @@ class Novada(scrapy.Spider):
         self.display.stop()
 
     def start_requests(self):
-        """
         for sport in self.sports_list:
             uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&liveOnly=true' % (sport)
             req = scrapy.Request(url=self.domain + uri, callback=self.body)
             req.meta['sport_name'] = sport
             yield req
-        """
-        with open('test.txt', 'w') as fp:
-            fp.write('Test bye')
 
     def body(self, response):
         # try:
