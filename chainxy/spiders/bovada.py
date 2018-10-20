@@ -98,30 +98,6 @@ class Novada(scrapy.Spider):
     def __init__(self):
         self.display = Display(visible=0, size=(1650, 1248))
         self.display.start()
-
-        # self.driver = webdriver.PhantomJS(executable_path='./phantomjs')
-
-        # options = selenium.webdriver.ChromeOptions()
-        # options.add_argument('headless')
-       
-        """
-        prof = webdriver.FirefoxProfile()
-        prof.set_preference('dom.webnotifications.enabled', False)
-
-        options = Options()
-        options.headless = True
-
-        caps = DesiredCapabilities.FIREFOX
-        caps['marionette'] = False
-        #caps['binary'] = '/usr/bin/firefox'
-
-        self.driver = webdriver.Firefox( 
-                firefox_profile=prof,
-                #capabilities=caps,
-                firefox_options=options,
-                executable_path='./geckodriver')
-        """
-       
         #self.driver = webdriver.Firefox(executable_path='./geckodriver')
         self.driver = webdriver.Chrome(executable_path="./chromedriver")
 
