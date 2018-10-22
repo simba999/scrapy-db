@@ -20,16 +20,16 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from pyvirtualdisplay import Display
 
 import pdb
 
 
-# db = SqliteDatabase('bovada.db')
-db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
+db = SqliteDatabase('bovada.db')
+# db = MySQLDatabase('my_app', user='root', password='Admin1234!@#$', host='localhost', port=3306)
 
 class BaseModel(Model):
     class Meta:
@@ -96,15 +96,31 @@ class Novada(scrapy.Spider):
     ]
 
     def __init__(self):
-        self.display = Display(visible=0, size=(1650, 1248))
-        self.display.start()
+        # self.display = Display(visible=0, size=(1650, 1248))
+        # self.display.start()
         #self.driver = webdriver.Firefox(executable_path='./geckodriver')
-        self.driver = webdriver.Chrome(executable_path="./chromedriver")
+        # self.driver = webdriver.Chrome(executable_path="./chromedriver")
 
-        self.driver.get(self.domain + '/?overlay=login')
+
+        prof = webdriver.FirefoxProfile()
+        prof.set_preference('dom.webnotifications.enabled', False)
+
+        opts = webdriver.FirefoxOptions()
+        opts.set_headless(headless=True)
+
+        self.driver = webdriver.Firefox( 
+                firefox_profile=prof,
+                firefox_options=opts,
+                executable_path='./geckodriver')
+
         print(self.domain + '/sports?overlay=login')
         time.sleep(2)
-        element = WebDriverWait(self.driver, 100).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
+        self.driver.get(self.domain + '/?overlay=login')
+        try:
+            element = WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//input[@id='email']")))
+        except:
+            self.driver.save_screenshot('screenie.png')
+            pdb.set_trace()
         element.send_keys('steven@hooley.me')
         self.driver.find_element_by_xpath("//input[@id='login-password']").send_keys('Access2017?')
         self.driver.find_element_by_xpath("//label[@id='remember-me-label']").click()
@@ -113,7 +129,7 @@ class Novada(scrapy.Spider):
 
     def spider_closed(self, spider):
         self.driver.quit()
-        self.display.stop()
+        # self.display.stop()
 
     def start_requests(self):
         for sport in self.sports_list:
