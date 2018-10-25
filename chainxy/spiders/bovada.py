@@ -133,7 +133,7 @@ class Novada(scrapy.Spider):
 
     def start_requests(self):
         for sport in self.sports_list:
-            uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&liveOnly=true' % (sport)
+            uri = '/services/sports/event/v2/events/A/description/%s?marketFilterId=def&preMatchOnly=true&eventsLimit=50&lang=en' % (sport)
             req = scrapy.Request(url=self.domain + uri, callback=self.body)
             req.meta['sport_name'] = sport
             yield req
@@ -342,34 +342,34 @@ class Novada(scrapy.Spider):
                         
                         item['link'] = self.validate(self.domain +'/sports'+ link);
                         print(item)
-                        # req = scrapy.Request(url=item['link'], callback=self.save_data)
-                        # req.meta['item'] = item
-                        # yield req
-                        detail_url = ''
-                        try:
-                            detail_url = item['link'].decode()
-                        except:
-                            detail_url = item['link']
+                        # # req = scrapy.Request(url=item['link'], callback=self.save_data)
+                        # # req.meta['item'] = item
+                        # # yield req
+                        # detail_url = ''
+                        # try:
+                        #     detail_url = item['link'].decode()
+                        # except:
+                        #     detail_url = item['link']
 
-                        try:
-                            self.driver.get(detail_url)
+                        # try:
+                        #     self.driver.get(detail_url)
                         
-                            time.sleep(3)
-                            source = self.driver.page_source.encode("utf8")
-                            tree = etree.HTML(source)
+                        #     time.sleep(3)
+                        #     source = self.driver.page_source.encode("utf8")
+                        #     tree = etree.HTML(source)
 
-                            try:
-                                item['Team1_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()')[0])
-                            except:
-                                item['Team1_points'] = ''
+                        #     try:
+                        #         item['Team1_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][1]/text()')[0])
+                        #     except:
+                        #         item['Team1_points'] = ''
 
-                            try:
-                                item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
-                            except:
-                                item['Team2_points'] = ''
-                            print('D*********************', item)
-                        except:
-                            pass
+                        #     try:
+                        #         item['Team2_points'] = self.validate(tree.xpath('//section[@class="coupon-content more-info"][1]//div[@class="results"]//span[@class="score-nr"][2]/text()')[0])
+                        #     except:
+                        #         item['Team2_points'] = ''
+                        #     print('D*********************', item)
+                        # except:
+                        #     pass
 
                         existing_elements = Bovada.select().where(Bovada.event_id==item['event_id'])
                         last_update = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
